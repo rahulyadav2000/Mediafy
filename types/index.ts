@@ -7,4 +7,5 @@ export interface Video {
   compressedSize: number;
   duration: number;
   createdAt: Date;
+  updatedAt: Date;
 }
