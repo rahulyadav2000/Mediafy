@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { v2 as cloudinary } from "cloudinary";
-import { PrismaClient } from "@/app/generated/prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
         publicId: result.public_id,
         originalSize: originalSize,
         compressedSize: String(result.bytes),
-        duration: String(result.duration),
+        duration: result.duration ?? 0,
       },
     });
 
